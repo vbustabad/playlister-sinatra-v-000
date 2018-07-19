@@ -36,6 +36,8 @@ class SongsController < ApplicationController
   end
 
   patch 'songs/:slug' do
+    binding.pry
+
     @song = Song.find_by_slug(params[:slug])
     @song.update(params[:song])
     @song.artist = Artist.find_or_create_by(name: params[:artist][:name])
@@ -43,8 +45,6 @@ class SongsController < ApplicationController
     @song.save
 
     flash[:message] = "Successfully updated song."
-
-    binding.pry
 
     erb :'/songs/show'
   end
