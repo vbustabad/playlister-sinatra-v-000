@@ -44,6 +44,8 @@ class SongsController < ApplicationController
 
     flash[:message] = "Successfully updated song."
 
+    binding.pry
+
     erb :'/songs/show'
   end
 
